@@ -1,0 +1,15 @@
+# Java / Maven
+Backend/livraria/target/
+Backend/livraria/.idea/
+Backend/livraria/*.iml
+
+# Frontend dependencies and build output
+Frontend/node_modules/
+Frontend/dist/
+Frontend/build/
+
+# Local editor and operating-system files
+**/.idea/
+.vscode/settings.json
+*.swp
+.DS_Store
