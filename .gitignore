@@ -2,11 +2,16 @@
 Backend/livraria/target/
 Backend/livraria/.idea/
 Backend/livraria/*.iml
+Backend/livraria/package-lock.json
 
 # Frontend dependencies and build output
 Frontend/node_modules/
 Frontend/dist/
 Frontend/build/
+Frontend/package-lock.json
+Frontend/livraria/node_modules/
+Frontend/livraria/dist/
+Frontend/livraria/.angular/
 
 # Local editor and operating-system files
 **/.idea/

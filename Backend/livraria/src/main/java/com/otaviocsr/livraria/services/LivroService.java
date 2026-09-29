@@ -37,9 +37,11 @@ public class LivroService {
         Livro livroExistente = buscarPorId(id);
 
         livroExistente.setTitulo(livro.getTitulo());
-        livroExistente.setPreco(livro.getPreco());
         livroExistente.setAnoPublicacao(livro.getAnoPublicacao());
         livroExistente.setAutor(livro.getAutor());
+        livroExistente.setGenero(livro.getGenero());
+        livroExistente.setSinopse(livro.getSinopse());
+        livroExistente.setQuantidadePaginas(livro.getQuantidadePaginas());
 
         return repository.save(livroExistente);
     }

@@ -14,23 +14,28 @@ public class Livro {
 
     private String titulo;
 
-    private Double preco;
-
     private Integer anoPublicacao;
 
-    @ManyToOne
-    @JoinColumn(name = "autor_id")
-    private Autor autor;
+    private String autor;
+
+    private String genero;
+
+    private String sinopse;
+
+    private Integer quantidadePaginas;
 
     public Livro() {
     }
 
-    public Livro(Long id, String titulo, Double preco, Integer anoPublicacao, Autor autor) {
+    public Livro(Long id, String titulo, Integer anoPublicacao, String autor,
+                 String genero, String sinopse, Integer quantidadePaginas) {
         this.id = id;
         this.titulo = titulo;
-        this.preco = preco;
         this.anoPublicacao = anoPublicacao;
         this.autor = autor;
+        this.genero = genero;
+        this.sinopse = sinopse;
+        this.quantidadePaginas = quantidadePaginas;
     }
 
     public void setId(Long id) {
@@ -41,15 +46,11 @@ public class Livro {
         this.titulo = titulo;
     }
 
-    public void setPreco(Double preco) {
-        this.preco = preco;
-    }
-
     public void setAnoPublicacao(Integer anoPublicacao) {
         this.anoPublicacao = anoPublicacao;
     }
 
-    public void setAutor(Autor autor) {
+    public void setAutor(String autor) {
         this.autor = autor;
     }
 }
