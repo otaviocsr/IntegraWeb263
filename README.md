@@ -7,7 +7,7 @@ O frontend permite cadastrar livros e envia os dados para o backend em
 ## Estrutura
 
 ```text
-Backend/livraria   API Spring Boot, JPA e banco H2
+Backend/livraria   API Spring Boot, MongoDB e Spring Data
 Frontend/livraria  Aplicação Angular
 ```
 
@@ -15,12 +15,26 @@ Frontend/livraria  Aplicação Angular
 
 - Java 21 ou superior
 - Node.js e npm
+- MongoDB 8 ou Docker Desktop
 
 ## Executar o projeto
 
 Abra dois terminais na raiz do repositório.
 
+### MongoDB
+
+Com Docker Desktop em execução, suba o banco na raiz do projeto:
+
+```bash
+docker compose up -d mongodb
+```
+
+O banco será criado em `mongodb://localhost:27017/livraria`, com os dados
+persistidos no volume `livraria-mongodb-data`.
+
 ### Backend
+
+O MongoDB precisa estar disponível antes de iniciar a API.
 
 ```bash
 cd Backend/livraria
@@ -62,16 +76,37 @@ Exemplo de cadastro:
 }
 ```
 
+## API de autores
+
+| Método | Endpoint | Descrição |
+| --- | --- | --- |
+| `GET` | `/api/autores` | Lista os autores |
+| `GET` | `/api/autores/{id}` | Busca um autor |
+| `POST` | `/api/autores` | Cadastra um autor |
+| `PUT` | `/api/autores/{id}` | Atualiza um autor |
+| `DELETE` | `/api/autores/{id}` | Remove um autor |
+
 ## Banco de dados
 
-O projeto usa H2 em memória. Os dados ficam disponíveis apenas enquanto o
-backend estiver em execução e são recriados quando a aplicação reinicia.
+O backend usa MongoDB e lê a conexão pela variável `MONGODB_URI`. Sem essa
+variável, utiliza o MongoDB local padrão:
 
-Console do H2: `http://localhost:8080/h2-console`
+```text
+mongodb://localhost:27017/livraria
+```
 
-- JDBC URL: `jdbc:h2:mem:livraria`
-- Usuário: `sa`
-- Senha: vazia
+Para usar MongoDB Atlas ou outro servidor, defina a URI antes de iniciar o
+backend:
+
+```bash
+export MONGODB_URI="mongodb+srv://usuario:senha@cluster.mongodb.net/livraria"
+./mvnw spring-boot:run
+```
+
+As coleções usadas pela aplicação são `livros` e `autores`.
+
+Não versione credenciais no código. Para MongoDB Atlas, mantenha a senha em
+uma variável de ambiente ou em um gerenciador de segredos.
 
 ## Testes e build
 

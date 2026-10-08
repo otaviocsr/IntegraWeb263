@@ -19,7 +19,7 @@ public class AutorService {
         return repository.findAll();
     }
 
-    public Autor buscarPorId(Long id) {
+    public Autor buscarPorId(String id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Autor não encontrado"));
     }
@@ -28,7 +28,7 @@ public class AutorService {
         return repository.save(autor);
     }
 
-    public Autor atualizar(Long id, Autor autor) {
+    public Autor atualizar(String id, Autor autor) {
 
         Autor autorExistente = buscarPorId(id);
 
@@ -38,7 +38,7 @@ public class AutorService {
         return repository.save(autorExistente);
     }
 
-    public void deletar(Long id) {
+    public void deletar(String id) {
 
         Autor autor = buscarPorId(id);
 

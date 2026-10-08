@@ -24,7 +24,7 @@ public class LivroController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Livro> buscarPorId(@PathVariable Long id) {
+    public ResponseEntity<Livro> buscarPorId(@PathVariable String id) {
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
@@ -35,14 +35,14 @@ public class LivroController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Livro> atualizar(
-            @PathVariable Long id,
+            @PathVariable String id,
             @RequestBody Livro livro) {
 
         return ResponseEntity.ok(service.atualizar(id, livro));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+    public ResponseEntity<Void> deletar(@PathVariable String id) {
 
         service.deletar(id);
 

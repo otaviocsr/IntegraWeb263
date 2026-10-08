@@ -1,14 +1,13 @@
 package com.otaviocsr.livraria.entities;
 
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
-@Table(name = "autores")
+@Document(collection = "autores")
 public class Autor {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     private String nome;
 
@@ -17,17 +16,17 @@ public class Autor {
     public Autor() {
     }
 
-    public Autor(Long id, String nome, String nacionalidade) {
+    public Autor(String id, String nome, String nacionalidade) {
         this.id = id;
         this.nome = nome;
         this.nacionalidade = nacionalidade;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -23,7 +23,7 @@ public class AutorController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Autor> buscarPorId(@PathVariable Long id) {
+    public ResponseEntity<Autor> buscarPorId(@PathVariable String id) {
         return ResponseEntity.ok(service.buscarPorId(id));
     }
 
@@ -34,14 +34,14 @@ public class AutorController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Autor> atualizar(
-            @PathVariable Long id,
+            @PathVariable String id,
             @RequestBody Autor autor) {
 
         return ResponseEntity.ok(service.atualizar(id, autor));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable Long id) {
+    public ResponseEntity<Void> deletar(@PathVariable String id) {
 
         service.deletar(id);
 

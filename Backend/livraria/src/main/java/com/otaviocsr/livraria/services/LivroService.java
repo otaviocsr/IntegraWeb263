@@ -21,7 +21,7 @@ public class LivroService {
     }
 
     // GET BY ID
-    public Livro buscarPorId(Long id) {
+    public Livro buscarPorId(String id) {
         return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Livro não encontrado"));
     }
@@ -32,7 +32,7 @@ public class LivroService {
     }
 
     // PUT
-    public Livro atualizar(Long id, Livro livro) {
+    public Livro atualizar(String id, Livro livro) {
 
         Livro livroExistente = buscarPorId(id);
 
@@ -47,7 +47,7 @@ public class LivroService {
     }
 
     // DELETE
-    public void deletar(Long id) {
+    public void deletar(String id) {
 
         Livro livro = buscarPorId(id);
 

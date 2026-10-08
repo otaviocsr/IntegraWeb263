@@ -1,16 +1,15 @@
 package com.otaviocsr.livraria.entities;
 
-import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity
 @Data
-@Table(name = "livros")
+@Document(collection = "livros")
 public class Livro {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     private String titulo;
 
@@ -27,7 +26,7 @@ public class Livro {
     public Livro() {
     }
 
-    public Livro(Long id, String titulo, Integer anoPublicacao, String autor,
+    public Livro(String id, String titulo, Integer anoPublicacao, String autor,
                  String genero, String sinopse, Integer quantidadePaginas) {
         this.id = id;
         this.titulo = titulo;
@@ -38,7 +37,7 @@ public class Livro {
         this.quantidadePaginas = quantidadePaginas;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
